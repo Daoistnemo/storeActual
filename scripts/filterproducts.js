@@ -1,9 +1,12 @@
+/// Actividad 1.
+
 // // Funcion para capturar texto
 // function captureText() {
 //     console.log("capturado");
 // }
 
 
+///Actividad 2. 
 
 // -------------------------------------------------------------------------------------
 // // Seleccionar el input de búsqueda usando el id
@@ -19,7 +22,7 @@
 // searchSelector.addEventListener("keyup", captureText);
 
 ///------------------------------------------------------------------------------------
-
+///Actividad 3.
 
 // // Seleccionar el elemento con id 'search'
 // const searchSelector = document.querySelector('#search');
