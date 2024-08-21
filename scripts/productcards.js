@@ -6,7 +6,7 @@ function createCard(product) {
           <img class="product-img" src="${product.imageSrc}" alt="${product.title}" />
           <div class="product-info">
               <span class="product-title">${product.title}</span>
-              <span class="product-description">${product.description}</span>
+              <span class="product-color">${product.colors}</span>
               <div class="product-price-block">
                   <span class="product-price">${product.price}</span>
                   <span class="product-discount">${product.discount}</span>

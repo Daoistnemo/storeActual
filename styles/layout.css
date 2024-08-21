@@ -299,6 +299,21 @@ footer {
 }
 
 .footer-column a {
-  color: #000; /* Ajusta el color según sea necesario */
+  color: #ffffff; /* Ajusta el color según sea necesario */
   text-decoration: none;
+}
+/* Estilo para las miniaturas de las imágenes del producto */
+.mini-img {
+  width: 80px; /* Ajusta este valor según el tamaño deseado */
+  height: auto; /* Mantiene la proporción de aspecto de la imagen */
+  margin: 5px; /* Espacio entre miniaturas */
+  cursor: pointer; /* Cambia el cursor para indicar que se puede hacer clic */
+  border: 2px solid #ccc; /* Opcional: añade un borde alrededor de las miniaturas */
+  border-radius: 4px; /* Opcional: redondea los bordes de las miniaturas */
+  transition: transform 0.3s; /* Opcional: añade una transición suave al hacer hover */
+}
+
+/* Estilo al pasar el mouse sobre la miniatura */
+.mini-img:hover {
+  transform: scale(10); /* Amplía la miniatura al pasar el mouse sobre ella */
 }

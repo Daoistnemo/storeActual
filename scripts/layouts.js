@@ -24,11 +24,11 @@ const navS = document.getElementsByClassName("nav-button");
 
 // Cambia el estilo de los elementos con la clase "nav-button"
 for (let i = 0; i < navS.length; i++) {
-  navS[i].style.backgroundColor = "#28a745";
   navS[i].style.color = "#ffffff"; // Cambia el color del texto a blanco
   navS[i].style.padding = "10px 20px"; // Cambia el padding para hacer los botones más grandes
   navS[i].style.textDecoration = "none"; // Elimina el subrayado del enlace
   navS[i].style.borderRadius = "5px"; // Redondea las esquinas de los botones
+  navS[i].style.fontSize = "15px";
 }
 
 // --------------------------------------------------------------------------------------
