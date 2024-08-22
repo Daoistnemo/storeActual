@@ -1,21 +1,23 @@
 function printDetails(id) {
-    // Buscar el producto con el ID especificado
-    const product = products.find((each) => each.id === parseInt(id, 10));
-  
-    // Crear una plantilla de detalles del producto
-    const detailsTemplate = `
+  // Buscar el producto con el ID especificado
+  const product = products.find((each) => each.id === parseInt(id, 10));
+
+  // Crear una plantilla de detalles del producto
+  const detailsTemplate = `
       <section class="product-images-block">
         <div class="product-images">
           <img
-          class="mini-img"
-          id="big-img"
-          src="${product.imageSrc}"
+              class="mini-img"
+            src="${product.images}"
+            alt="${product.title}"
+            onclick="changeMini(event)"
 
         />
-          <img
-          class="mini-img"
-          id="big-img"
-          src="${product.imageSrc}"
+     <img
+              class="mini-img"
+            src="${product.imageSrc}"
+            alt="${product.title}"
+            onclick="changeMini(event)"
 
         />
           <!-- Aquí puedes incluir las miniaturas de imágenes si es necesario -->
@@ -33,9 +35,9 @@ function printDetails(id) {
           <fieldset class="product-fieldset">
             <label class="product-label" for="color">Color</label>
             <select class="product-select" id="color">
-              ${product.colors.map(
-                (color) => `<option value="${color}">${color}</option>`
-              ).join("")}
+              ${product.colors
+                .map((color) => `<option value="${color}">${color}</option>`)
+                .join("")}
             </select>
           </fieldset>
         </form>
@@ -81,19 +83,26 @@ function printDetails(id) {
         </div>
       </div>
     `;
-  
-    // Seleccionar el elemento donde se mostrará la plantilla
-    const detailsSelector = document.querySelector("#details");
-    
-    // Actualizar el HTML del elemento seleccionado con la plantilla
-    detailsSelector.innerHTML = detailsTemplate;
+
+  // Seleccionar el elemento donde se mostrará la plantilla
+  const detailsSelector = document.querySelector("#details");
+
+  // Actualizar el HTML del elemento seleccionado con la plantilla
+  detailsSelector.innerHTML = detailsTemplate;
+}
+
+// Capturar el parámetro ID de la URL
+const query = location.search;
+const params = new URLSearchParams(query);
+const id = params.get("id");
+
+// Función para cambiar la imagen grande
+function changeMini(event) {
+const selectedSrc = event.target.src;
+  const bigSelector = document.querySelector("#big-img");
+  bigSelector.src = selectedSrc;
   }
   
-  // Capturar el parámetro ID de la URL
-  const query = location.search;
-  const params = new URLSearchParams(query);
-  const id = params.get('id');
-  
-  // Llamar a la función printDetails con el ID capturado
-  printDetails(id);
-  
+
+// Llamar a la función printDetails con el ID capturado
+printDetails(id);

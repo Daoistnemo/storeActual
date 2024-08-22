@@ -29,6 +29,7 @@ for (let i = 0; i < navS.length; i++) {
   navS[i].style.textDecoration = "none"; // Elimina el subrayado del enlace
   navS[i].style.borderRadius = "5px"; // Redondea las esquinas de los botones
   navS[i].style.fontSize = "15px";
+  navS[i].style.fontWeight = "bold"; // Hace que la fuente esté en negrita
 }
 
 // --------------------------------------------------------------------------------------
