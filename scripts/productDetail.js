@@ -157,73 +157,71 @@ function changeSubtotal(event) {
     console.error("No se encontró el elemento con ID 'price'");
   }
 }
-
-function saveProduct(id) {
-  const found = products.find((each) => each.id === id);
-  const product = {
-    id: id,
-    title: found.title,
-    price: found.price,
-    image: found.images[0],
-    color: document.querySelector("#color").value,
-    quantity: document.querySelector("#quantity-" + id).value,
-  };
-  const stringifyProduct = JSON.stringify(product);
-  localStorage.setItem("cart", stringifyProduct);
-}
+// Actividad 1.
+// function saveProduct(id) {
+//   const found = products.find((each) => each.id === id);
+//   const product = {
+//     id: id,
+//     title: found.title,
+//     price: found.price,
+//     image: found.images[0],
+//     color: document.querySelector("#color").value,
+//     quantity: document.querySelector("#quantity-" + id).value,
+//   };
+//   const stringifyProduct = JSON.stringify(product);
+//   localStorage.setItem("cart", stringifyProduct);
+// }
 
 
 //----------------------------------------------------------------------------------------
 
 
-// function saveProduct(id) {
-//   // Buscar el producto con el ID proporcionado en el array de productos
-//   const found = products.find((each) => each.id === id);
+function saveProduct(id) {
+  // Buscar el producto con el ID proporcionado en el array de productos
+  const found = products.find((each) => each.id === id);
 
-//   if (!found) {
-//     console.error("Producto no encontrado");
-//     return;
-//   }
+  if (!found) {
+    console.error("Producto no encontrado");
+    return;
+  }
 
-//   // Crear un objeto con la información del producto que se va a guardar
-//   const newProduct = {
-//     id: id,
-//     title: found.title,
-//     price: found.price,
-//     image: found.images[0], // Asumimos que la primera imagen es la principal
-//     color: document.querySelector("#color").value, // Obtener el color seleccionado del formulario
-//     quantity: document.querySelector("#quantity-" + id).value, // Obtener la cantidad seleccionada del formulario
-//   };
+  // Crear un objeto con la información del producto que se va a guardar
+  const newProduct = {
+    id: id,
+    title: found.title,
+    price: found.price,
+    image: found.images[0], // Asumimos que la primera imagen es la principal
+    color: document.querySelector("#color").value, // Obtener el color seleccionado del formulario
+    quantity: document.querySelector("#quantity-" + id).value, // Obtener la cantidad seleccionada del formulario
+  };
 
-//   // Obtener el carrito del localStorage, si existe
-//   let cart = localStorage.getItem("cart");
+  // Obtener el carrito del localStorage, si existe
+let cart = localStorage.getItem('cart');
 
-//   // Verificar si el carrito existe y es un array
-//   if (cart) {
-//     try {
-//       cart = JSON.parse(cart);
-//       if (!Array.isArray(cart)) {
-//         cart = [];
-//       }
-//     } catch (e) {
-//       // Si hay un error en el parseo, inicializamos el carrito como un array vacío
-//       console.error("Error al parsear el carrito del localStorage:", e);
-//       cart = [];
-//     }
-//   } else {
-//     cart = [];
-//   }
+if (cart) {
+  // Intenta parsear el carrito
+  cart = JSON.parse(cart);
+  // Verifica si el carrito es un array; si no, inicialízalo como un array vacío
+  if (!Array.isArray(cart)) {
+    cart = [];
+  }
+} else {
+  // Si no hay carrito en el localStorage, inicialízalo como un array vacío
+  cart = [];
+}
 
-//   // Agregar el nuevo producto al carrito
-//   cart.push(newProduct);
 
-//   // Guardar el carrito actualizado en el localStorage
-//   localStorage.setItem("cart", JSON.stringify(cart));
-// }
+  // Agregar el nuevo producto al carrito
+  cart.push(newProduct);
+
+  // Guardar el carrito actualizado en el localStorage
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 
 function clearAllLocalStorage() {
   localStorage.clear();
   console.log("Todo el localStorage ha sido eliminado.");
 }
 
-clearAllLocalStorage();
+// clearAllLocalStorage();
