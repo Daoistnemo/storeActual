@@ -11,10 +11,12 @@ function printDetails(id) {
   const detailsTemplate = `
     <section class="product-images-block">
       <div class="product-images">
-        ${product.images.map((image) => `
+        ${product.images
+          .map(
+            (image) => `
           <img
             class="mini-img"
-            src="${product.images}"
+            src="${image}"
             alt="${product.title}"
             onclick="changeMini(event)"
           />
@@ -24,7 +26,9 @@ function printDetails(id) {
             alt="${product.title}"
             onclick="changeMini(event)"
           />
-        `).join('')}
+        `
+          )
+          .join("")}
       </div>
       <img
         class="big-img"
@@ -39,20 +43,10 @@ function printDetails(id) {
         <fieldset class="product-fieldset">
           <label class="product-label" for="color">Color</label>
           <select class="product-select" id="color">
-            ${product.colors.map(
-              (color) => `<option value="${color}">${color}</option>`
-            ).join("")}
+            ${product.colors
+              .map((color) => `<option value="${color}">${color}</option>`)
+              .join("")}
           </select>
-        </fieldset>
-        <fieldset class="product-fieldset">
-          <label class="product-label" for="quantity">Cantidad</label>
-          <input
-            type="number"
-            id="quantity"
-            min="1"
-            value="1"
-            onchange="changeSubtotal(event)"
-          />
         </fieldset>
       </form>
       <div class="product-description">
@@ -71,7 +65,7 @@ function printDetails(id) {
         <ul class="checkout-policy-list">
           <li>
             <span class="policy-icon">
-              <img src="./assets/truck.png" alt="Truck"/>
+              <img src="./assets/truck.png" alt="Camión"/>
             </span>
             <span class="policy-desc">
               Agrega el producto al carrito para conocer los costos de envío
@@ -79,7 +73,7 @@ function printDetails(id) {
           </li>
           <li>
             <span class="policy-icon">
-              <img src="./assets/plane.png" alt="Plane"/>
+              <img src="./assets/plane.png" alt="Avión"/>
             </span>
             <span class="policy-desc">
               Recibí aproximadamente entre 10 y 15 días hábiles, seleccionando envío normal
@@ -88,10 +82,8 @@ function printDetails(id) {
         </ul>
         <div class="checkout-process">
           <div class="top">
-            <input type="number" min="1" value="1" onchange="changeSubtotal(event)" />
-            <button type="button" class="cart-btn">
-              Añadir al Carrito
-            </button>
+            <input type="number" min="1" id="quantity-${id}" value="1" onchange="changeSubtotal(event)" />
+            <button type="button" class="cart-btn" onclick="saveProduct(${id})">Añadir al Carrito</button>
           </div>
         </div>
       </div>
@@ -134,11 +126,11 @@ function changeSubtotal(event) {
     console.error("Cantidad no válida");
     return;
   }
-  
+
   // Buscar el producto con el ID especificado
-  const id = new URLSearchParams(location.search).get('id');
+  const id = new URLSearchParams(location.search).get("id");
   const product = products.find((each) => each.id === parseInt(id, 10));
-  
+
   if (!product) {
     console.error("Producto no encontrado");
     return;
@@ -147,18 +139,18 @@ function changeSubtotal(event) {
   // Verificar que el precio del producto sea un número
   const price = parseFloat(product.price);
   console.log("Precio del producto:", price); // Depura el precio
-  
+
   if (isNaN(price)) {
     console.error("Precio no válido");
     return;
   }
-  
+
   // Calcular el subtotal
   const subtotal = quantity * price;
-  
+
   // Seleccionar la etiqueta donde se renderiza el subtotal
   const priceElement = document.querySelector("#price");
-  
+
   if (priceElement) {
     priceElement.textContent = `$${subtotal.toFixed(2)}`;
   } else {
@@ -166,3 +158,72 @@ function changeSubtotal(event) {
   }
 }
 
+function saveProduct(id) {
+  const found = products.find((each) => each.id === id);
+  const product = {
+    id: id,
+    title: found.title,
+    price: found.price,
+    image: found.images[0],
+    color: document.querySelector("#color").value,
+    quantity: document.querySelector("#quantity-" + id).value,
+  };
+  const stringifyProduct = JSON.stringify(product);
+  localStorage.setItem("cart", stringifyProduct);
+}
+
+
+//----------------------------------------------------------------------------------------
+
+
+// function saveProduct(id) {
+//   // Buscar el producto con el ID proporcionado en el array de productos
+//   const found = products.find((each) => each.id === id);
+
+//   if (!found) {
+//     console.error("Producto no encontrado");
+//     return;
+//   }
+
+//   // Crear un objeto con la información del producto que se va a guardar
+//   const newProduct = {
+//     id: id,
+//     title: found.title,
+//     price: found.price,
+//     image: found.images[0], // Asumimos que la primera imagen es la principal
+//     color: document.querySelector("#color").value, // Obtener el color seleccionado del formulario
+//     quantity: document.querySelector("#quantity-" + id).value, // Obtener la cantidad seleccionada del formulario
+//   };
+
+//   // Obtener el carrito del localStorage, si existe
+//   let cart = localStorage.getItem("cart");
+
+//   // Verificar si el carrito existe y es un array
+//   if (cart) {
+//     try {
+//       cart = JSON.parse(cart);
+//       if (!Array.isArray(cart)) {
+//         cart = [];
+//       }
+//     } catch (e) {
+//       // Si hay un error en el parseo, inicializamos el carrito como un array vacío
+//       console.error("Error al parsear el carrito del localStorage:", e);
+//       cart = [];
+//     }
+//   } else {
+//     cart = [];
+//   }
+
+//   // Agregar el nuevo producto al carrito
+//   cart.push(newProduct);
+
+//   // Guardar el carrito actualizado en el localStorage
+//   localStorage.setItem("cart", JSON.stringify(cart));
+// }
+
+function clearAllLocalStorage() {
+  localStorage.clear();
+  console.log("Todo el localStorage ha sido eliminado.");
+}
+
+clearAllLocalStorage();
