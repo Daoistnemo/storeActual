@@ -1,77 +1,91 @@
-.cart-section {
+/* Tarjeta del producto */
+.product-card {
   display: flex;
-}
-
-.product-cart, .cart-resume {
-  background-color: #f2f2f2;
+  align-items: center; /* Alinea verticalmente al centro */
+  background-color: hsl(0, 15%, 94%);
   border-radius: 5px;
-  padding: 30px;
-  margin: 10px;
-  height: 220px;
-  word-wrap: break-word;
-  display: flex;
-  justify-content: space-between;
+  padding: 20px;
+  margin: 10px 0; /* Margen vertical entre tarjetas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  max-width: 500px; /* Ajusta el ancho máximo según sea necesario */
+  width: 90%; /* Ocupa el ancho completo del contenedor padre */
+  box-sizing: border-box; /* Incluye el padding y border en el cálculo del ancho */
 }
+#articule.cartproducts {
 
-/* CART CARD */
-.product-cart {
-  width: 680px;
-  align-items: center;
+width: auto;
+
 }
 .product-img {
-  width: 100px;
-  height: 100px;
+  width: 100px; /* Ajusta según el tamaño deseado */
+  height: 100px; /* Ajusta según el tamaño deseado */
   border-radius: 5px;
-}
-.product-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2px;
-  width: 340px;
-  height: 100px;
-}
-.product-price {
-  width: 100%;
-  text-align: right;
-}
-.product-description {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.product-input {
-  width: 70px;
-  height: 40px;
-  border-radius: 10px;
-  border: 1px #eaeaea solid;
-  padding: 5px;
+  object-fit: cover; /* Ajusta la imagen para cubrir el área sin distorsionar */
+  margin-right: 5px; /* Espacio entre la imagen y la descripción */
 }
 
-/* RESUME */
-.cart-resume {
-  width: 340px;
-  flex-direction: column;
-}
-.cart-data {
-  flex-grow: 1;
+.product-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; /* Espacio entre elementos dentro de product-info */
+  width: 100%; /* Ocupa el ancho restante del contenedor */
+  overflow: hidden; /* Oculta el texto que se desborda */
+  text-overflow: ellipsis; /* Agrega "..." al final del texto que se desborda */
+  white-space: nowrap; /* Evita el salto de línea */
+  max-width: 100%; /* Asegura que el texto no exceda el ancho del contenedor */
 }
-.cart-title {
+
+.product-title {
+  font-size: 1.2em; /* Tamaño de fuente para el título */
+  font-weight: bold; /* Negrita para el título */
+}
+
+.product-color {
+  color: #666; /* Color gris para la lista de colores */
+  margin-bottom: 10px; /* Espacio inferior entre colores y otros detalles */
+}
+
+.product-price-block {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Espacio entre precio y descuento */
+  align-items: center; /* Alinea verticalmente al centro */
 }
-.cart-total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+.product-price {
+  font-size: 1.2em; /* Tamaño de fuente para el precio */
+  font-weight: bold; /* Negrita para el precio */
+  color: #333; /* Color del precio */
 }
+
+.product-discount {
+  color: #099627; /* Color rojo para el descuento */
+  font-weight: bold; /* Negrita para el descuento */
+}
+
+.product-tax-policy {
+  font-size: 0.9em; /* Tamaño de fuente para la política fiscal */
+  color: #666; /* Color gris para el texto de política fiscal */
+}
+
+
+#total {
+
+  align-items: center; /* Alinea verticalmente al centro */
+  background-color: hsl(0, 15%, 94%);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px 0; /* Margen vertical entre tarjetas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  max-width: 800px; /* Ajusta el ancho máximo según sea necesario */
+  width: auto; /* Ocupa el ancho completo del contenedor padre */
+  box-sizing: border-box; /* Incluye el padding y border en el cálculo del ancho */
+}
+
 .cart-tax {
-  padding-bottom: 10px;
+  margin-bottom: 10px; /* Espacio inferior para los impuestos */
 }
-.cart-btn {
+
+#cart-btn {
   width: 100%;
   background: #ff3b3c;
   color: white;
@@ -80,6 +94,13 @@
   height: 40px;
   border-radius: 10px;
 }
-.cart-btn:hover {
+#cart-btn:hover {
   background: #ff5151;
+}
+
+main {
+  width: 100%;
+  display: flex;
+
+  padding: 20px;
 }

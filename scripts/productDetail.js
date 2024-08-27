@@ -193,6 +193,8 @@ function saveProduct(id) {
     image: found.images[0], // Asumimos que la primera imagen es la principal
     color: document.querySelector("#color").value, // Obtener el color seleccionado del formulario
     quantity: document.querySelector("#quantity-" + id).value, // Obtener la cantidad seleccionada del formulario
+    description: found.description,
+    discount:found.discount,
   };
 
   // Obtener el carrito del localStorage, si existe

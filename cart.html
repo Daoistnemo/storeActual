@@ -10,7 +10,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles/layout.css" />
-    <link rel="stylesheet" href="./styles/cart.css" />
+
+    <link rel="stylesheet" href="./styles/cart.css">
     <title>Tienda Virtual</title>
   </head>
   <body>
@@ -24,6 +25,9 @@
             alt="Logo store"
           />
         </a>
+        <form class="header-form">
+          <input type="text" id="search-input" placeholder="Search" />
+        </form>
         <ul class="header-social">
           <li id="facebook" class="header-li">
             <a class="header-a" href="https://facebook.com">
@@ -51,23 +55,7 @@
           </li>
         </ul>
       </div>
-      <nav id="navbar">
-        <li class="nav-li">
-          <a class="nav-a" href="#">Ofertas</a>
-        </li>
-        <li class="nav-li">
-          <a class="nav-a" href="#">Cómo comprar</a>
-        </li>
-        <li class="nav-li">
-          <a class="nav-a" href="#">Costos y tarifas</a>
-        </li>
-        <li class="nav-li">
-          <a class="nav-a" href="#">Mis pedidos</a>
-        </li>
-        <li class="nav-li">
-          <a class="nav-a" href="#">Garantía</a>
-        </li>
-      </nav>
+      <nav id="nav"></nav>
     </header>
     <section class="hero-section">
       <article class="hero-title">
@@ -75,66 +63,23 @@
         <span class="hero-span">carrito</span>
       </article>
     </section>
-    <main></main>
+    <main>
+      <article id="cartproducts">
+        <!-- Las tarjetas de producto se insertarán aquí -->
+      </article>
+      <article id="total">
+        <!-- Aquí se mostrará el cálculo total a pagar -->
+      </article>
+    </main>
     <footer>
-      <div id="footer" class="footer-container">
-        <ul class="footer-ul">
-          <li class="footer-main-item">
-            <a class="footer-a" href="./index.html">Ofertas</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Laptops</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Audio</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Auriculares</a>
-          </li>
-        </ul>
-        <ul class="footer-ul">
-          <li class="footer-main-item">
-            <a class="footer-a" href="./index.html">Cómo comprar</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Formas de pago</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Envios</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Devoluciones</a>
-          </li>
-        </ul>
-        <ul class="footer-ul">
-          <li class="footer-main-item">
-            <a class="footer-a" href="./index.html">Costos y tarifas</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Impuestos</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Facturación</a>
-          </li>
-        </ul>
-        <ul class="footer-ul">
-          <li class="footer-main-item">
-            <a class="footer-a" href="./index.html">Mis pedidos</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Pedir nuevamente</a>
-          </li>
-          <li class="footer-li">
-            <a class="footer-a" href="./index.html">Lista de deseos</a>
-          </li>
-        </ul>
-        <ul class="footer-ul">
-          <li class="footer-main-item">
-            <a class="footer-a" href="./index.html">Garantía</a>
-          </li>
-        </ul>
-      </div>
+      <div id="footer" class="footer-container"></div>
       <div class="footer-copyright">Curso de HTML + CSS 2023</div>
     </footer>
+    <script src="./scripts/cart.js"></script>
+    <script src="./scripts/filterproducts.js"></script>
+    <script src="./scripts/layouts.js"></script>
+    <script src="./scripts/product.js"></script>
+    <script src="./scripts/productcards.js"></script>
+    <script src="./scripts/total.js"></script>
   </body>
 </html>
