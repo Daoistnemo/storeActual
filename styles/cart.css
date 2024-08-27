@@ -68,7 +68,7 @@ width: auto;
 }
 
 
-#total {
+#total-container {
 
   align-items: center; /* Alinea verticalmente al centro */
   background-color: hsl(0, 15%, 94%);

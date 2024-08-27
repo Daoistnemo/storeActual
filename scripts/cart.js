@@ -20,25 +20,23 @@ function createCartCard(product) {
   const imageSrc = product.imageSrc || defaultImage;
 
   return `
-  
       <div class="product-card">
-              <img class="product-img" src="${imageSrc}" alt="${product.title}" />
-              <div class="product-info">
-                  <span class="product-title">${product.title}</span>
-                  <span class="product-color">${(product.colors || []).join(", ")}</span>
-                        <div class="product-description">
-        <span class="product-label">Descripción</span>
-        <p>${product.description}</p>
-      </div>
-                  <div class="product-price-block">
-                      <span class="product-price">${product.price.toLocaleString(('es-AR', { style: 'currency', currency: 'ARS' }))}</span>
-                      <span class="product-discount">${product.discount}</span>
-                  </div>
-                  <div class="product-tax-policy">
-                      Incluye impuesto País y percepción AFIP
-                  </div>
+          <img class="product-img" src="${imageSrc}" alt="${product.title}" />
+          <div class="product-info">
+              <span class="product-title">${product.title}</span>
+              <span class="product-color">${(product.colors || []).join(", ")}</span>
+              <div class="product-description">
+                <span class="product-label">Descripción</span>
+                <p>${product.description}</p>
               </div>
-        
+              <div class="product-price-block">
+                  <span class="product-price">${product.price.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</span>
+                  <span class="product-discount">${product.discount}</span>
+              </div>
+              <div class="product-tax-policy">
+                  Incluye impuesto País y percepción AFIP
+              </div>
+          </div>
       </div>
   `;
 }
@@ -52,7 +50,7 @@ function updateCartView() {
     const productCardsHTML = cartProducts.map(createCartCard).join("");
     cartProductsContainer.innerHTML = productCardsHTML;
   } else {
-    console.error('Elemento con id "cartproducts" no encontrado.');
+    console.error('Elemento con id "cart-products-container" no encontrado.');
   }
 }
 

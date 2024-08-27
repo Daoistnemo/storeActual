@@ -4,7 +4,7 @@
 function createTotalTemplate(arrayOfProducts) {
     let total = 0;
     arrayOfProducts.forEach(product => {
-      total += product.price * (product.quantity || 1); // Suponiendo que 'quantity' puede ser undefined
+      total += product.price * (product.quantity || 1);
     });
   
     return `
@@ -18,7 +18,7 @@ function createTotalTemplate(arrayOfProducts) {
   // Función para actualizar la vista del total
   function updateTotalView() {
     const cartProducts = loadCartProducts();
-    const totalContainer = document.getElementById("total");
+    const totalContainer = document.getElementById("total-container");
   
     if (totalContainer) {
       const totalHTML = createTotalTemplate(cartProducts);
