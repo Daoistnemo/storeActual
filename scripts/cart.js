@@ -15,19 +15,20 @@ const defaultImagesById = {
 };
 
 function createCartCard(product) {
-  // Obtén la imagen predeterminada basada en el id del producto
   const defaultImage = defaultImagesById[product.id] || "./assets/default-image.jpg";
   const imageSrc = product.imageSrc || defaultImage;
+
+
 
   return `
       <div class="product-card">
           <img class="product-img" src="${imageSrc}" alt="${product.title}" />
           <div class="product-info">
               <span class="product-title">${product.title}</span>
-              <span class="product-color">${(product.colors || []).join(", ")}</span>
+             <span class="product-color">${product.color || 'Color no disponible'}</span> 
               <div class="product-description">
-                <span class="product-label">Descripción</span>
-                <p>${product.description}</p>
+                  <span class="product-label">Descripción</span>
+                  <p>${product.description || 'Descripción no disponible'}</p>
               </div>
               <div class="product-price-block">
                   <span class="product-price">${product.price.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</span>
@@ -35,6 +36,10 @@ function createCartCard(product) {
               </div>
               <div class="product-tax-policy">
                   Incluye impuesto País y percepción AFIP
+              </div>
+              <div class="Quantity">
+              <span class="Quanity-product">Cantidad: ${product.quantity}</span>
+                  
               </div>
           </div>
       </div>
