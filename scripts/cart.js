@@ -54,8 +54,9 @@ function updateCartView() {
   if (cartProductsContainer) {
     const productCardsHTML = cartProducts.map(createCartCard).join("");
     cartProductsContainer.innerHTML = productCardsHTML;
+    console.log('Cart view updated.');
   } else {
-    console.error('Elemento con id "cart-products-container" no encontrado.');
+    console.error('Elemento con id "cartproducts" no encontrado.');
   }
 }
 
@@ -86,8 +87,11 @@ function changeQuantity(event) {
   // Guardar los productos actualizados en localStorage
   localStorage.setItem("cart", JSON.stringify(cartProducts)); 
 
-  // Actualizar la vista del carrito
-  updateCartView();
+  // Actualizar la vista del carrito y total
   updateTotalView();
+  updateCartView();
+  
+
+
 }
 
