@@ -11,7 +11,7 @@ function finalizePurchase() {
   
   // Obtener el botón "Finaliza tu compra" y añadir el listener de clic
   document.addEventListener("DOMContentLoaded", () => {
-    const buyButton = document.getElementById("cart-btn");
+    const buyButton = document.getElementById("buy-btn");
   
     if (buyButton) { //Si el boton existe se le agrega el evento click que llama a la funcion FinalizePuchase
       buyButton.addEventListener("click", finalizePurchase);

@@ -11,9 +11,11 @@ function createTotalTemplate(arrayOfProducts) {
         <h4 class="total-title">Resumen del pedido</h4>
         <p class="total-p">Total: ${total.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</p>
          <div class="product-tax-policy"> Incluye impuesto País y percepción AFIP </div>
-        <button id="cart-btn" type="button">COMPRAR</button>
+        <button id="buy-btn" type="button">COMPRAR</button>
+       
     `;
   }
+   //  <button type="button" class="buy-btn" onclick="finalizePurchase()">Finalizar compra</button> otro boton
   
   // Función para actualizar la vista del total
   function updateTotalView() {

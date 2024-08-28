@@ -120,3 +120,16 @@ input[type="number"] {
   border: 1px solid #ccc; /* Borde  */
   font-size: 14px; /* Tamaño de texto  */
 }
+
+button {
+  width: 100%;
+  background: #ff3b3c;
+  color: white;
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  border-radius: 10px;
+}
+button:hover {
+  background: #ff5151;
+}
