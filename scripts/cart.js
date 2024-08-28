@@ -38,8 +38,8 @@ function createCartCard(product) {
                   Incluye impuesto País y percepción AFIP
               </div>
               <div class="Quantity">
-              <span class="Quanity-product">Cantidad: ${product.quantity}</span>
-                  
+          <span class="Quantity-product">Cantidad: </span>
+                  <input type="number" name="quantity" min="1" id="${product.id}" value="${product.quantity}" onchange="changeQuantity(event)">
               </div>
           </div>
       </div>
@@ -63,3 +63,31 @@ function updateCartView() {
 document.addEventListener("DOMContentLoaded", () => {
   updateCartView();
 });
+
+function changeQuantity(event) {
+  const input = event.target;
+  const productId = parseInt(input.id, 10); // El 10 es la base numerica, para que no tome Hexadecimal u Octal. 
+  const newQuantity = parseInt(input.value, 10);
+
+  // Validar la cantidad
+  if (isNaN(newQuantity) || newQuantity < 1) { //Si La nueva cantidad esta vacia o es menor que 1 pondra el valor a 1.
+    input.value = 1; // Restablecer al mínimo permitido
+    return;
+  }
+
+  // Obtener productos del carrito
+  let cartProducts = loadCartProducts();
+
+  // Actualizar la cantidad del producto en el carrito
+  cartProducts = cartProducts.map(product => 
+    product.id === productId ? { ...product, quantity: newQuantity } : product //Operador ternario, si El id del input es el mismo del producto, buscara
+  ); // La cantidad y la cambiara por la Cantidad nueva, sino mantendra el producto sin cambios.
+
+  // Guardar los productos actualizados en localStorage
+  localStorage.setItem("cart", JSON.stringify(cartProducts)); 
+
+  // Actualizar la vista del carrito
+  updateCartView();
+  updateTotalView();
+}
+
